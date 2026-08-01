@@ -1,13 +1,4 @@
 allowBuilds:
-  msw: true
-  workerd: true
-catalog:
-  vite: npm:@voidzero-dev/vite-plus-core@1.5.0
-  vite-plus: 1.5.0
-overrides:
-  vite@*: "catalog:"
-peerDependencyRules:
-  allowAny:
-    - vite
-  allowedVersions:
-    vite: "*"
+  '@parcel/watcher': true
+  esbuild: true
+  workerd: set this to true or false
