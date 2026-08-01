@@ -1,10 +1,3 @@
-# Deployment
-
-- The site is served by Cloudflare Workers Static Assets. `cloudflare.config.ts` defines the Worker and `lzalien.org`; deploy with `cf`, never Wrangler.
-- `main` is the Workers Builds production branch. `beta-2`, `beta-3`, and other branches deploy through Workers Previews.
-- `pnpm run build` writes `dist/`, then `scripts/build-output.mjs` writes the `.cloudflare/output/v0/` tree consumed by `cf deploy --prebuilt`.
-- Manual deploys: `pnpm run deploy` for production, `pnpm run deploy:preview` for a preview.
-
 <!--VITE PLUS START-->
 
 # Using Vite+, the Unified Toolchain for the Web
@@ -16,17 +9,6 @@ Docs are local at `node_modules/vite-plus/docs` or online at https://viteplus.de
 ## Built-in Commands vs Scripts
 
 `vp <name>` runs a built-in command. `vp run <name>` runs a `package.json` script or a `vite.config.ts` task. Scripts cannot overwrite built-ins, so `vp dev` and `vp run dev` may do different things. Check `package.json` and `vite.config.ts` first, and run `vp run <name>` when the project defines a script or task with that name.
-
-## Running Scripts
-
-Run TypeScript and JavaScript files with `vpx <file>`, for example `vpx ./scripts/seed.ts --dry-run`. It handles enums, decorators, JSX, and tsconfig `paths`, so do not add `tsx` or `ts-node` to run scripts. `vpx --watch <file>` reruns the file when a file it uses changes, in place of `tsx watch`. `vp node <file>` runs plain Node.js.
-
-## Tool Versions
-
-Run `vp toolchain` to show versions and relationships in the active Vite+
-release. Add a tool name to select part of the graph. For example, run
-`vp toolchain vite`. Use `--global` to ignore the local `vite-plus` package. Use
-`vp why <package>` to show the package-manager dependency graph.
 
 ## Review Checklist
 
