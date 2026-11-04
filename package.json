@@ -1,32 +1,40 @@
 {
   "name": "las-web",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vp dev",
-    "build": "tsc --runExternalCode --noEmit && vp build && node scripts/build-output.mjs",
+    "build": "tsc -b && vp build && node scripts/build-output.mjs",
     "build:preview": "CLOUDFLARE_PREVIEW_BUILD=true pnpm run build",
+    "lint": "vp lint",
     "preview": "vp preview",
     "deploy": "pnpm run build && cf deploy --prebuilt --mode production",
     "deploy:preview": "pnpm run build:preview && cf previews deploy --prebuilt --mode production",
     "prepare": "vp config"
   },
   "dependencies": {
-    "vue": "^3.5.44",
-    "vue-router": "^5.4.0"
+    "motion": "^14.9.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@cloudflare/build-output-utils": "0.9.8",
     "@cloudflare/config": "0.30.0",
-    "@types/node": "^26.6.6",
-    "@vitejs/plugin-vue": "^6.0.10",
-    "@vue/content-mapper": "4.0.0-alpha.0",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
     "cf": "1.0.0-beta.27",
-    "sass": "^1.107.0",
-    "skills": "^1.7.4",
     "typescript": "7.1.0-beta",
+    "vite": "catalog:",
     "vite-plus": "catalog:"
   },
-  "packageManager": "pnpm@12.14.0"
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.16.1",
+      "onFail": "download"
+    }
+  }
 }
