@@ -52,6 +52,7 @@ Typography rule: use only the four weight tokens (`$font-weight-regular`, `-medi
 - `main` is the Workers Builds production branch. `beta-3` and other branches deploy through Workers Previews.
 - `pnpm run build` writes `dist/`, then `scripts/build-output.mjs` writes the `.cloudflare/output/v0/` tree consumed by `cf deploy --prebuilt`.
 - Manual deploys: `pnpm run deploy` for production, `pnpm run deploy:preview` for a preview.
+
 ## Working Notes
 
 - Only HOME has a page. RULES, ALBUM, MAP, MORE and the JOIN US / MORE flags are placeholder links (`<a>` without `href`); give them an `href` in `src/home/content.ts` or `Rail.tsx` once their pages exist. v2 targets for later: join QQ group `https://qm.qq.com/q/32DhVd36iI`, rules and gallery content in the handoff doc.
