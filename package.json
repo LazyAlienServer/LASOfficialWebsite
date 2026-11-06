@@ -23,7 +23,6 @@
     "@vitejs/plugin-vue": "^6.0.10",
     "@vue/content-mapper": "4.0.0-alpha.0",
     "cf": "1.0.0-beta.27",
-    "react-doctor": "^0.9.18",
     "sass": "^1.107.0",
     "skills": "^1.7.4",
     "typescript": "7.1.0-beta",
