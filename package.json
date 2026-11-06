@@ -17,15 +17,15 @@
     "vue-router": "^5.4.0"
   },
   "devDependencies": {
-    "@cloudflare/build-output-utils": "0.9.7",
-    "@cloudflare/config": "0.29.1",
+    "@cloudflare/build-output-utils": "0.9.8",
+    "@cloudflare/config": "0.30.0",
     "@types/node": "^26.6.6",
     "@vitejs/plugin-vue": "^6.0.10",
     "cf": "1.0.0-beta.27",
     "react-doctor": "^0.9.18",
     "sass": "^1.107.0",
     "skills": "^1.7.4",
-    "typescript": "~6.0.3",
+    "typescript": "~7.0.2",
     "vite-plus": "catalog:",
     "vue-tsc": "^3.3.14"
   },
