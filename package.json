@@ -16,10 +16,10 @@
   "devDependencies": {
     "@types/node": "^26.6.6",
     "@vitejs/plugin-vue": "^6.0.10",
-    "react-doctor": "^0.9.18",
-    "sass": "^1.107.0",
-    "skills": "^1.7.4",
-    "typescript": "~6.0.3",
+    "react-doctor": "^0.9.22",
+    "sass": "^1.107.1",
+    "skills": "^1.7.6",
+    "typescript": "~7.0.2",
     "vite-plus": "catalog:",
     "vue-tsc": "^3.3.14"
   },
