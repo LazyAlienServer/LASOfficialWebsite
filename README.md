@@ -19,7 +19,7 @@ Lazy Alien Server（LAS）官方网站，LAS 是以学生群体为主的 Minecra
 - 首页：`/`
 - 规章制度：`/rules`
 
-在线访问：[beta-2.lzalien.org](https://beta-2.lzalien.org/)
+在线访问：[lzalien.org](https://lzalien.org/)
 
 ## 技术栈
 
@@ -47,6 +47,17 @@ vp lint --deny-warnings
 ```
 
 `vp run build` 会先执行 TypeScript 检查，再生成生产构建文件。开发服务器默认使用 Vite+ 的开发流程。
+
+## 部署
+
+站点以 Cloudflare Workers 静态资源运行，Worker 配置在 `cloudflare.config.ts`，通过 `cf` CLI 部署，不使用 Wrangler：
+
+```bash
+pnpm run deploy          # 生产部署
+pnpm run deploy:preview  # 预览部署
+```
+
+`beta-2` 是 Workers Builds 的生产分支；其他分支和 Pull Request 通过 Previews 部署。`pnpm run build` 末尾的 `scripts/build-output.mjs` 会把 `dist/` 转换为 `cf deploy --prebuilt` 需要的 Build Output。
 
 ## 设计方向
 

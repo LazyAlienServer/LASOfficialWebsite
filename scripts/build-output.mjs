@@ -1,6 +1,6 @@
 // `cf deploy --prebuilt` reads the Build Output Specification tree in
 // `.cloudflare/output/v0/`. `cf` delegates builds to the project but a static
-// Vite app writes only `dist/`, so this script turns the finished build into
+// Vite SPA writes only `dist/`, so this script turns the finished build into
 // the tree `cf` deploys.
 import {
   cleanBuildOutputDir,

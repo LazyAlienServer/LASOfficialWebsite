@@ -25,6 +25,13 @@ Tilt rule: every slanted mark, edge, or panel uses the hero split-line angle, ne
 
 - Do not perform browser-based verification or use browser tooling unless the user explicitly asks for it.
 
+## Deployment
+
+- The site is served by Cloudflare Workers Static Assets. `cloudflare.config.ts` is the source of truth and `cf` is the CLI; do not add Wrangler or a Wrangler config.
+- `beta-2` is the Workers Builds production branch. Other branches and pull requests deploy through Workers Previews.
+- `pnpm run build` writes `dist/`, then `scripts/build-output.mjs` writes the `.cloudflare/output/v0/` tree consumed by `cf deploy --prebuilt`.
+- Manual deploys: `pnpm run deploy` for production, `pnpm run deploy:preview` for a preview.
+
 ## Working Notes
 
 - The homepage fetches and caches the six most-starred repositories from the LazyAlienServer GitHub organization at runtime.
