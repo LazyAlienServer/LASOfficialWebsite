@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vp dev",
-    "build": "vue-tsc && vp build && node scripts/build-output.mjs",
+    "build": "tsc --runExternalCode --noEmit && vp build && node scripts/build-output.mjs",
     "build:preview": "CLOUDFLARE_PREVIEW_BUILD=true pnpm run build",
     "preview": "vp preview",
     "deploy": "pnpm run build && cf deploy --prebuilt --mode production",
@@ -21,13 +21,13 @@
     "@cloudflare/config": "0.30.0",
     "@types/node": "^26.6.6",
     "@vitejs/plugin-vue": "^6.0.10",
+    "@vue/content-mapper": "4.0.0-alpha.0",
     "cf": "1.0.0-beta.27",
     "react-doctor": "^0.9.18",
     "sass": "^1.107.0",
     "skills": "^1.7.4",
-    "typescript": "^7.1.0-beta",
-    "vite-plus": "catalog:",
-    "vue-tsc": "^3.3.14"
+    "typescript": "7.1.0-beta",
+    "vite-plus": "catalog:"
   },
   "packageManager": "pnpm@12.14.0"
 }
