@@ -28,7 +28,7 @@ Tilt rule: every slanted mark, edge, or panel uses the hero split-line angle, ne
 ## Deployment
 
 - The site is served by Cloudflare Workers Static Assets. `cloudflare.config.ts` is the source of truth and `cf` is the CLI; do not add Wrangler or a Wrangler config.
-- `beta-2` is the Workers Builds production branch. Other branches and pull requests deploy through Workers Previews.
+- `main` is the Workers Builds production branch. `beta-2`, `beta-3`, and other branches deploy through Workers Previews.
 - `pnpm run build` writes `dist/`, then `scripts/build-output.mjs` writes the `.cloudflare/output/v0/` tree consumed by `cf deploy --prebuilt`.
 - Manual deploys: `pnpm run deploy` for production, `pnpm run deploy:preview` for a preview.
 
