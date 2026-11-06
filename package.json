@@ -1,51 +1,33 @@
 {
-  "name": "las-website",
-  "version": "0.0.0",
+  "name": "lasweb-v2",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vp dev",
-    "build": "vp build && node scripts/build-output.mjs",
-    "build:pages": "BASE_PATH=/website/ vp build",
+    "build": "vue-tsc && vp build && node scripts/build-output.mjs",
     "build:preview": "CLOUDFLARE_PREVIEW_BUILD=true pnpm run build",
-    "lint": "vp lint --fix .",
-    "format": "prettier --write .",
+    "preview": "vp preview",
     "deploy": "pnpm run build && cf deploy --prebuilt --mode production",
     "deploy:preview": "pnpm run build:preview && cf previews deploy --prebuilt --mode production",
     "prepare": "vp config"
   },
   "dependencies": {
-    "postprocessing": "^6.39.4",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "three": "^0.185.1"
+    "vue": "^3.5.44",
+    "vue-router": "^5.4.0"
   },
   "devDependencies": {
     "@cloudflare/build-output-utils": "0.9.7",
     "@cloudflare/config": "0.29.1",
-    "@playwright/test": "^1.62.1",
-    "@tailwindcss/vite": "^4.3.3",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
-    "@types/three": "^0.185.4",
-    "@vitejs/plugin-react": "^6.0.5",
+    "@types/node": "^26.6.6",
+    "@vitejs/plugin-vue": "^6.0.10",
     "cf": "1.0.0-beta.27",
-    "framer-motion": "^13.0.0",
-    "globals": "^17.9.0",
-    "lucide-react": "^1.28.0",
-    "playwright": "^1.62.1",
-    "pnpm": "^11.20.0",
-    "prettier": "^3.9.6",
-    "prettier-plugin-tailwindcss": "^0.8.1",
-    "shadcn": "^4.16.1",
-    "tailwindcss": "^4.3.3",
-    "typescript": "^7.0.2",
-    "typescript-eslint": "^8.66.0",
-    "vite": "catalog:",
-    "vite-plus": "catalog:"
+    "react-doctor": "^0.9.18",
+    "sass": "^1.107.0",
+    "skills": "^1.7.4",
+    "typescript": "~6.0.3",
+    "vite-plus": "catalog:",
+    "vue-tsc": "^3.3.14"
   },
-  "overrides": {
-    "vite": "npm:rolldown-vite@7.1.12"
-  },
-  "packageManager": "pnpm@12.16.1"
+  "packageManager": "pnpm@12.14.0"
 }

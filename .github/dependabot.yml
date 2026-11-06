@@ -3,10 +3,19 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "cron"
-      cronjob: "0 7 * * 0,3"
-    versioning-strategy: increase
+      interval: "weekly"
     groups:
-      deps:
+      npm:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "vite-plus"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      actions:
         patterns:
           - "*"

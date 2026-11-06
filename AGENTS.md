@@ -1,9 +1,42 @@
-# Deployment
+# Project Introduction
 
-- The site is served by Cloudflare Workers Static Assets. `cloudflare.config.ts` defines the Worker and `lzalien.org`; deploy with `cf`, never Wrangler.
+LASweb-v2 is the official website for Lazy Alien Server (LAS), a Chinese Minecraft server organization focused on student-led technical exchange. The site presents LAS's community, founding timeline, infrastructure, open-source projects, administration team, and joining information, with a separate rules page.
+
+## Architecture
+
+- Vue 3 application using Composition API and `<script setup lang="ts">`.
+- TypeScript for application logic, SCSS for styling, and Vite+ for development, builds, checking, and package management.
+- `src/views/` contains route-level pages: `HomePage.vue` composes the landing-page sections and `RulesPage.vue` renders the rules data.
+- `src/components/` contains reusable landing-page sections and interactive modules such as the live timer, hardware spec sheet, GitHub project listing, and join flow.
+- `src/data/rules.ts` is the source of truth for the rules page; `src/styles/` contains shared design tokens and global industrial UI styles.
+- `src/router/index.ts` defines the `/` home route and `/rules` rules route. The `@` alias resolves to `src/`.
+
+Detailed runtime boundaries, state ownership, data flows, and modification entry points are documented in [architecture.md](architecture.md).
+
+## Product and Design Context
+
+The visual language is neo-industrial and technological: blue and black are primary colors, white is used for contrast, and interfaces use panels, grid lines, status indicators, clipped corners, and restrained motion. Preserve the existing Chinese-language content and responsive behavior when changing UI. Respect `prefers-reduced-motion` and keep interactive controls keyboard-accessible.
+
+Themes: dark (default) and light, switched in the navbar (default follows the system). Light follows the Endfield site (endfield.hypergryph.com): white ground, `#f2f2f2` panels, `#010101` ink, industrial yellow `#fffa00`, and a section rhythm that is not all white: the navbar is `#f2f2f2`, the scroll tickers are yellow bands with black type, the timer and hardware sections form a dark block, the admin section is a gray band with white cards, the join group zone is a solid yellow panel with a black button, and the footer is dark. Colors are role tokens (`$color-fg`, `$color-accent`, `$color-accent-ink`, …; see `src/styles/variables.scss`), never raw hues: dark must stay unchanged when light changes. In light, yellow is only a fill on white — surfaces carrying black text, selected states, bands and bars at least 6px thick; brand text, thin lines, dots, and focus rings are black ink. Dark sections use the `dark-surface` mixin, where yellow is the brand ink. Light-only fixes go in `@include light { … }`.
+
+Tilt rule: every slanted mark, edge, or panel uses the hero split-line angle, never a hand-picked degree. The angle is the shared `--hero-slant` (with `--hero-slant-tan`) defined in `src/styles/global.scss`. It is computed from the hero image's clipped left edge, so it follows the viewport. Apply it as `transform: skewX(calc(-1 * var(--hero-slant)))` so slants lean like `/`. For a slanted edge on one side only, skew a background pseudo-element and clip it with `overflow: hidden` rather than hard-coding a pixel offset in `clip-path`. Out of scope: 45° corner chamfers (`clipped-panel`), diagonal hatch patterns, rotations (clock hands, arrows, vertical labels), and the hero seam itself.
+
+## Important Rules
+
+- Do not perform browser-based verification or use browser tooling unless the user explicitly asks for it.
+
+## Deployment
+
+- The site is served by Cloudflare Workers Static Assets. `cloudflare.config.ts` is the source of truth and `cf` is the CLI; do not add Wrangler or a Wrangler config.
 - `main` is the Workers Builds production branch. `beta-2`, `beta-3`, and other branches deploy through Workers Previews.
 - `pnpm run build` writes `dist/`, then `scripts/build-output.mjs` writes the `.cloudflare/output/v0/` tree consumed by `cf deploy --prebuilt`.
 - Manual deploys: `pnpm run deploy` for production, `pnpm run deploy:preview` for a preview.
+
+## Working Notes
+
+- The homepage fetches and caches the six most-starred repositories from the LazyAlienServer GitHub organization at runtime.
+- The founding date used by the live timer is 2022-08-29.
+- Images and logos are available under `public/`, `src/assets/`, and `.design/`; reuse existing assets and patterns before adding new ones.
 
 <!--VITE PLUS START-->
 
