@@ -4,8 +4,7 @@ import * as m from "motion/react-m";
 import type { ReactNode } from "react";
 import { ABOUT } from "./content.ts";
 import s from "./Home.module.css";
-import { easeOutCubic } from "./scroll.ts";
-import { PHASE } from "./transition.ts";
+import { PHASE, easeOutCubic } from "./transition.ts";
 
 /** Gap between consecutive line starts, and each line's own length, in scroll progress. */
 const LINE = { gap: 0.022, span: 0.07 };

@@ -1,14 +1,28 @@
 import * as m from "motion/react-m";
-import { META_BOTTOM, META_TOP } from "./content.ts";
+import { useEffect, useState } from "react";
+import { FOUNDED, META_BOTTOM, META_TOP } from "./content.ts";
 import type { MetaItem } from "./content.ts";
 import s from "./Home.module.css";
 import { AT, useIntro, wipe } from "./motion.ts";
-import { pad, uptime, useNow } from "./time.ts";
+
+const pad = (n: number) => String(n).padStart(2, "0");
 
 /** `1528D 04:12:33`: whole days, then the time within the current day. */
+const formatUptime = (now: number) => {
+  const total = Math.max(0, Math.floor((now - FOUNDED) / 1000));
+  const days = Math.floor(total / 86_400);
+  const hours = Math.floor(total / 3600) % 24;
+  const minutes = Math.floor(total / 60) % 60;
+  return `${days}D ${pad(hours)}:${pad(minutes)}:${pad(total % 60)}`;
+};
+
 function Uptime() {
-  const { days, hours, minutes, seconds } = uptime(useNow());
-  return `${days}D ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  const [now, setNow] = useState(Date.now);
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  return formatUptime(now);
 }
 
 function Band({
