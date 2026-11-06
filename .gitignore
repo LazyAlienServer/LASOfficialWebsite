@@ -13,6 +13,7 @@ node_modules
 # Build output
 dist
 dist-ssr
+.cloudflare
 *.local
 
 # Editor directories and files
