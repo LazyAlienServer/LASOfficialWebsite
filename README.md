@@ -1,7 +1,5 @@
 # LASweb-v2
 
-中文 | [English](README_en.md)
-
 Lazy Alien Server（LAS）官方网站，LAS 是以学生群体为主的 Minecraft 技术交流社区。
 
 ## 网站内容
