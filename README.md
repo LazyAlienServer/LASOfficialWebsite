@@ -57,7 +57,7 @@ pnpm run deploy          # 生产部署
 pnpm run deploy:preview  # 预览部署
 ```
 
-`main` 是 Workers Builds 的生产分支；`beta-2`、`beta-3` 和其他分支通过 Previews 部署。`pnpm run build` 末尾的 `scripts/build-output.mjs` 会把 `dist/` 转换为 `cf deploy --prebuilt` 需要的 Build Output。
+`main` 是 Workers Builds 的生产分支；`beta-3` 和其他分支通过 Previews 部署。`pnpm run build` 末尾的 `scripts/build-output.mjs` 会把 `dist/` 转换为 `cf deploy --prebuilt` 需要的 Build Output。
 
 ## 设计方向
 

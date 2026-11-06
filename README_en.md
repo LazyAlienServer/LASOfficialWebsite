@@ -57,7 +57,7 @@ pnpm run deploy          # production
 pnpm run deploy:preview  # preview
 ```
 
-`main` is the Workers Builds production branch; `beta-2`, `beta-3`, and other branches deploy through Previews. `scripts/build-output.mjs` converts `dist/` into the Build Output that `cf deploy --prebuilt` consumes.
+`main` is the Workers Builds production branch; `beta-3` and other branches deploy through Previews. `scripts/build-output.mjs` converts `dist/` into the Build Output that `cf deploy --prebuilt` consumes.
 
 ## Design direction
 
